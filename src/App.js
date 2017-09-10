@@ -1,14 +1,32 @@
 import React, { Component } from 'react';
 import './App.css';
-import song from './song.mp3';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedSong: 0
+        };
+    }
+    songs = ['song', 'song2', 'song3', 'song4'];
+    handleSong = event => {
+        this.setState({ selectedSong: event.target.value });
+    };
     render() {
-        console.log(song);
+        const songItems = this.songs.map((song, index) => (
+            <button onClick={this.handleSong} value={index} key={song}>
+                {song}
+            </button>
+        ));
+        console.log(this.state);
         return (
             <div className="App">
                 <h1>Victor</h1>
-                <audio src="./song.mp3" >audio player</audio>
+                <audio
+                    controls
+                    src={'./' + this.songs[this.state.selectedSong] + '.mp3'}
+                />
+                <div>{songItems}</div>
             </div>
         );
     }
