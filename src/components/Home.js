@@ -4,7 +4,7 @@ const Home = () => {
     return (
         <div>
             <p>
-                im make music
+                Noooo
             </p>
         </div>
     );
